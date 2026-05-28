@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Performance Tests" parallel="tests" data-provider-thread-count="1" thread-count="7">
+
+    <parameter name="WAIT_TIME" value="240"/>
+    <parameter name="ENV" value="AWS_STG"/>
+    <parameter name="BROWSER" value="CHROME"/>
+    <parameter name="QUIT" value="Yes"/>
+    <parameter name="DBStore" value="Yes"/>
+    <parameter name="SCREENSHOTS" value="Yes"/>
+    <parameter name="EXECUTION_ID" value="3004"/>
+
+    <!--  SCENARIO 1  -->
+    <test enabled="false" name="Performance Scenario 1.1 - Policy Creation - HO">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_1"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 1.2 - Policy Creation - PA">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_2"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 1.3 - Policy Creation - EX">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_3"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 1.4 - Policy Creation - PW">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_4"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 1.5 - Policy Creation - CO">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_5"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 1.6 - Policy Creation - HS">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_6"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 1.7 - Policy Creation - ES">
+        <classes>
+            <class name="runners.c_performance.scenario1.Scenario1_7"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 2  -->
+    <test enabled="false" name="Performance Scenario 2.1 - Endorsement Creation - HO">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_1"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 2.2 - Endorsement Creation - PA">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_2"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 2.3 - Endorsement Creation - EX">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_3"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 2.4 - Endorsement Creation - PW">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_4"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 2.5 - Endorsement Creation - CO">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_5"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 2.6 - Endorsement Creation - HS">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_6"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 2.7 - Endorsement Creation - ES">
+        <classes>
+            <class name="runners.c_performance.scenario2.Scenario2_7"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 3  -->
+    <test enabled="false" name="Performance Scenario 3.1 - Renewal Creation - HO">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_1"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 3.2 - Renewal Creation - PA">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_2"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 3.3 - Renewal Creation - EX">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_3"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 3.4 - Renewal Creation - PW">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_4"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 3.5 - Renewal Creation - CO">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_5"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 3.6 - Renewal Creation - HS">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_6"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 3.7 - Renewal Creation - ES">
+        <classes>
+            <class name="runners.c_performance.scenario3.Scenario3_7"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 4  -->
+    <test enabled="true" name="Performance Scenario 4.1 - CLUE / MVR - HO">
+        <classes>
+            <class name="runners.c_performance.scenario4.Scenario4_1"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 4.2 - CLUE / MVR - PA">
+        <classes>
+            <class name="runners.c_performance.scenario4.Scenario4_2"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 4.3 - CLUE / MVR - EX">
+        <classes>
+            <class name="runners.c_performance.scenario4.Scenario4_3"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 4.4 - CLUE / MVR - HS">
+        <classes>
+            <class name="runners.c_performance.scenario4.Scenario4_4"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 4.5 - CLUE / MVR - ES">
+        <classes>
+            <class name="runners.c_performance.scenario4.Scenario4_5"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 5  -->
+    <test enabled="true" name="Performance Scenario 5.1  - Customer Level - Mini Diary tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_1"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.2  - Customer Level - Account Summary tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_2"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.3  - Customer Level - Customer Details tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_3"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.4  - Customer Level - Member Flag tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_4"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.5  - Customer Level - Policy Delivery Preferences tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_5"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.6  - Customer Level - Billing Delivery Preferences tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_6"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.7  - Customer Level - Required Forms tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_7"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.8  - Customer Level - Documents tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_8"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.9  - Customer Level - Proposals tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_9"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.10 - Customer Level - Diary tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_10"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.11 - Customer Level - History tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_11"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.12 - Customer Level - Insurance Score Management">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_12"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.13 - Customer Level - CLUE/MVR tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_13"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.14 - Customer Level - Broker History tab">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_14"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 5.15 - Customer Level - Account Referral">
+        <classes>
+            <class name="runners.c_performance.scenario5.Scenario5_15"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 6  -->
+    <test enabled="true" name="Performance Scenario 6.1 - Large number of endorsements - HO">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_1"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 6.2 - Large number of endorsements - PA">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_2"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 6.3 - Large number of endorsements - EX">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_3"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 6.4 - Large number of endorsements - PW">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_4"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 6.5 - Large number of endorsements - CO">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_5"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 6.6 - Large number of endorsements - HS">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_6"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 6.7 - Large number of endorsements - ES">
+        <classes>
+            <class name="runners.c_performance.scenario6.Scenario6_7"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 7  -->
+    <test enabled="true" name="Performance Scenario 7.1 - High Vehicle Count - PA">
+        <classes>
+            <class name="runners.c_performance.scenario7.Scenario7"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 8  -->
+    <test enabled="false" name="Performance Scenario 8.1 - Policy Creation For Automated Renewals - HO">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_1"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 8.2 - Policy Creation For Automated Renewals - PA">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_2"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 8.3 - Policy Creation For Automated Renewals - EX">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_3"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 8.4 - Policy Creation For Automated Renewals - PW">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_4"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 8.5 - Policy Creation For Automated Renewals - CO">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_5"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 8.6 - Policy Creation For Automated Renewals - HS">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_6"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Performance Scenario 8.7 - Policy Creation For Automated Renewals - ES">
+        <classes>
+            <class name="runners.c_performance.scenario8.Scenario8_7"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 9  -->
+    <test enabled="true" name="Performance Scenario 9.1 - Broker Level - Broker Details tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_1"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.2 - Broker Level - Personnel tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_2"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.3 - Broker Level - Licenses tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_3"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.4 - Broker Level - Underwriting tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_4"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.5 - Broker level - Producer Codes tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_5"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.6 - Broker Level - Change License Producer tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_6"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.7 - Broker Level - Documents tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_7"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.8 - Broker Level - History tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_8"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 9.9 - Broker Level - Diary tab">
+        <classes>
+            <class name="runners.c_performance.scenario9.Scenario9_9"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 10  -->
+    <test enabled="true" name="Performance Scenario 10.1 - Transaction level - History tab">
+        <classes>
+            <class name="runners.c_performance.scenario10.Scenario10_1"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 10.2 - Transaction level - Diary tab">
+        <classes>
+            <class name="runners.c_performance.scenario10.Scenario10_2"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 10.3 - Transaction level - Claims tab">
+        <classes>
+            <class name="runners.c_performance.scenario10.Scenario10_3"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Performance Scenario 10.4 - Transaction level - Member flag tab">
+        <classes>
+            <class name="runners.c_performance.scenario10.Scenario10_4"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 11  -->
+    <test enabled="false" name="Performance Scenario 11 - BOR">
+        <classes>
+            <class name="runners.c_performance.scenario11.Scenario11"/>
+        </classes>
+    </test>
+
+    <!--  SCENARIO 12  -->
+    <test enabled="false" name="Performance Scenario 12 - New Customer Multiple LOB">
+        <classes>
+            <class name="runners.c_performance.scenario12.Scenario12"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Flood Project Pre Prod validation Sprint 1 (08/25 - 09/05) 2025" parallel="tests" data-provider-thread-count="9" thread-count="9">
+
+    <parameter name="WAIT_TIME" value="80"/>
+    <parameter name="ENV" value="PRE_PROD"/>
+    <parameter name="BROWSER" value="CHROME_H"/>
+    <parameter name="QUIT" value="Yes"/>
+    <parameter name="SCREENSHOTS" value="Yes"/>
+
+    <test enabled="true" name="TS654 - Pre Prod Test Set">
+        <classes>
+            <class name="runners.d_other.primary_flood.regression.TS654"/>
+        </classes>
+    </test>
+
+    <test enabled="false" name="Rerun Failures">
+        <classes>
+            <class name="runners.d_other.FailuresRunner"/>
+        </classes>
+    </test>
+
+</suite>

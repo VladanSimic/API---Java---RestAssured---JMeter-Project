@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Jenkins Smoke Tests - STG" parallel="tests" data-provider-thread-count="20" thread-count="20">
+
+    <parameter name="WAIT_TIME" value="30"/>
+    <parameter name="ENV" value="AWS_STG"/>
+    <parameter name="BROWSER" value="CHROME_H"/>
+    <parameter name="QUIT" value="Yes"/>
+    <parameter name="SCREENSHOTS" value="Yes"/>
+
+    <test enabled="true" name="Extended Smoke Suite - AWS STG">
+        <classes>
+            <class name="runners.a_smoke.SmokeJenkins"/>
+        </classes>
+    </test>
+
+    <test enabled="false" name="Smoke Suite - CC">
+        <classes>
+            <class name="runners.a_smoke.SmokeCC"/>
+        </classes>
+    </test>
+
+    <test enabled="false" name="Rerun Failures">
+        <classes>
+            <class name="runners.d_other.FailuresRunner"/>
+        </classes>
+    </test>
+
+</suite>

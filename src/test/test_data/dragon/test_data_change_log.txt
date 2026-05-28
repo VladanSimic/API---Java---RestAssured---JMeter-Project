@@ -1,0 +1,181 @@
+03-07-2024 Updated QuoteCreation QuoteCreatorCC sheet
+04-09-2024 [QuoteCreation] - Removed data for FL 101 RMS/AIR under Underwriting Company column
+04-10-2024 [QuoteCreation] - Fixed Endorsement transaction date for HS, and changed Personal Liability Limit for FL RMS/AIR from 300000 to 300,000
+04-19-2024 [QuoteCreation] - Added Admitted for CO and PA
+04-26-2024 [QuoteCreation] - Added a lot of new columns on HO sheet
+04-29-2024 [QuoteCreation] - Redesign of HO sheet and new columns introduced. Personal Liability changed from 500000 to 500,000 to match UI values,
+changed W/H for every state from N/A to 2% to comply with possible validation rules that may occur if value is N/A.
+05-28-2024 [QuoteCreation] - Completely changed HO main sheet, added new ones HO related, also updated a Personal Liability Limit
+on HS sheet for all rows.
+05-29-2024 [QuoteCreation] - Changes on QuoteCreationHO for Law and Ordiance Optional Coverage from [Yes] to [30%] for all FL test cases.
++ Changed Additional Interest to Interest_003, and populated LLC Questionnaire columns for NY_101 Extended Smoke Test Case
++ Changed Named Structure Exclusion from [Yes] to [No] for all HO test cases.
+06/05/2024 - Test data split by LOB, all occurrences of QuoteCreation now include lob suffix
+06-11-2024 [QuoteCreationHO] - Added machinery elevation certificate data for all TC
+06-12-2024 [QuoteCreationHO] - Added Elevation Certificate data for all TC
+06-13-2024 [QuoteCreationHO] - Optional Coverages LandScapingLimits to No for all
+06-14-2024 [QuoteCreationHO] - Added Elevation_Certificate_Bottom_Lowest_Horizontal_Structural and set default to 2 for all TC
+06-17-2024 [QuoteCreationHS] - Added Flood Elevation
+06-20-2024 [QuoteCreationHS] - Added TX_101 Smoke TC
+07-12-2024 [QuoteCreationHO] - Added Wildfire Mitigation Credits Block
+06-25-2024 [QuoteCreationHS] - Added Construction_Details_Barrier_Island and set to default [Yes] for all TC
+06-26-2024 [QuoteCreationHO] - Set Optional_Coverages_Flood_Advantage, Optional_Coverages_Excess_Flood_Coverage and Flood_Extension
++to blank for all TC
+07-18-2024 [QuoteCreationPA] - Added Driver_Details_Mature_Driver_Training on NB
+07-22-2024 Updated QuoteCreationHS
+07-22-2024 QuoteCreationHS- Added sheets for OOS Endorsement
+07-24-2024 Updated QuoteCreationHS - Added sheets for RNW
+09-19-24 [QuoteCreationsHS] - Added Protection_Surveillance_Camera, Protection_Locked_Or_Manned_Elevator,Optional_Coverages_Sinkhole_Loss_Coverage on all  transactions
+09-24-24 [QuoteCreatorsHS] - Deleted duplicate columns in all transactions: Fine_Arts_Block_Blanket_Coverage_Single_Article_Limit, Optional_Coverages_Guaranteed_Replacement_Cost, Optional_Coverages_Increased_Limit_Of_Ensuing_Fungi_Or_Bacteria_Coverage_Limit
+10-02-2024 [QuoteCreationHS] - Added additional columns inside Additional_Interests (quote level) sheet
+10-02-2024 [QuoteCreationCC] - Added additional columns inside Additional_Interests (quote level) sheet
+10-02-2024 [QuoteCreationCO] - Added Additional Insured, HouseHold_Entity_Locations and Beneficial Owners sheets
+10-02-2024 [QuoteCreationEX] - Added Additional Insured, HouseHold_Entity_Locations and Beneficial Owners sheets
+10-02-2024 [QuoteCreationES] - Added Additional Insured, HouseHold_Entity_Locations and Beneficial Owners sheets
+10-16-2024 [QuoteCreationHS] - Added Location Details Block and Geo Location Details Block on all Transactions
+10-17-2024 [QuoteCreationHS] - Added changes in Principal Beneficial Owners sheet
+10-21-2024 [QuoteCreationHO] - Added beneficial owner support for LLC/Trust columns inside that sheet
+10-18-2024 [QuoteCreationHS] - Added new sheet Collection Classes
+10-17-2024 [QuoteCreationHS] - Added Licensed ProducerDEV2, Advisor_Servicer_DEV2, BrokerID_DEV2, Agency_Name_DEV2
+10-30-2024 [QuoteCreationHS] - Changed AOP from 10k to 2,5k for TX
+10-31-2024 [QuoteCreationHS] - Removed Waiver Deductible Broker for NY, it's no more applicable
+11-19-2024 [QuoteCreationHS] - Added new sheets for additional properties, added columns in QuoteCreatorHS for all transactions - Policy_Information_Additional_Properties
+10-29-2024 [ALL - QuoteCreation] - Added Licensed Producer, Advisor Servicer, BrokerID, Agency Name for QA2 and DEV2
+11-08-2024 [QuoteCreationHS] - Deleted all value from END, OOS, RNW
+11-12-2024 [QuoteCreationHS] - Changed TX_101 from $10k to $2,500 AOP Ded and Added _END for Elevation_Certificate_Bottom_Lowest_Horizontal_Structural column on Endorsement
+12-10-2024 [QuoteCreationHS] - added 2 rows
+12-09-2024 [QuoteCreationEX] - Changed own motocycle/recreational radio buttons from No to null for CA and EX because buttons are not present there yet
+12-20-2024 [QuoteCreationHS] - Added missing Property_Information sheets and cells
+12-02-2024 [QuoteCreationHO] - Added more additional interests on their own sheet, as well as RI_007 tc with all additional interests
+12-18-2024 [QuoteCreationHO] - Perimeter security and Water Leak to = Yes for all TC (protection credit)
+12-23-2024 [QuoteCreationHO] - Added Wind_Mitigation_Fortified_Designation_Exp_Date column
+01-02-2025 [QuoteCreationHO] - Added Construction_Details_Distance_To_Coast_Override column
+01-17-2025 [QuoteCreationHS] - Changed Optional_Coverages_Liability_Extension to No for FL_001
+05-02-2025 [QuoteCreationPA] - Added 14 new rows inside QuoteCreatorPA - [AR_013,AR_014,IN_013,IN_014,NM_013,NM_014,NY_102,NY_103,SC_013,SC_014,FL_013,FL_014,MI_013,MI_014]
+05-02-2025 [QuoteCreationPA] - added 13 new rows inside PA_AdditionalOperators - [Operator_015,Operator_016,Operator_017,Operator_018,Operator_019,Operator_020,Operator_021,Operator_022,Operator_023,Operator_024,Operator_025,Operator_026,Operator_027]
+05-02-2025 [QuoteCreationPA] - added 4 new rows inside PA_AdditionalVehicles - [SC_013_Vehicle_013,SC_014_Vehicle_014,SC_015_Vehicle_015,SC_016_Vehicle_016]
+02-10-2025 [QuoteCreationEX] - Added 2 new row inside QuoteCreatorEX - [OR_001,OR_002]
+02-10-2025 [QuoteCreationEX] - Added 1 col inside QuoteCreatorEX - NEW BUSSINES & END - Property Information Page - Column name: Additional_Operator_Exclude
+02-11-2025 [QuoteCreationEX] - Added 16 cols inside QuoteCreatorEX - NEW Business & END - Optional Coverages Page - Optional_Coverages_Canine_Liability_Exclusion,Optional_Coverages_Designated_Ongoing_Operation_Exclusion,Optional_Coverages_NamedPersonExclusion,Optional_Coverages_NamedAutoLiabilityExclusion
+12-24-2024 [QuoteCreationHS] - Changed Named Storm Ded for all test cases, and added Usage_Is_A_Management_Company_Used_To_Administer_Rentals? column to data on NB, EN, OOS EN, RNW
+12-24-2024 [QuoteCreationHS] - Added Application_And_Mandatory_Forms_Block_Roof_Replacement_Document column on NB, EN, OOS EN, RNW
+02-04-2025 [QuoteCreationPA] - Added 2 rows to AdditionalVehicles_END and AdditionalVehicles_RNW sheets
+02-26-2025 [QuoteCreationEX] - QuoteCreatorEX - Added 11 rows [WA_101, WA_103, WA_Forms_101,OR_002,OR_003,CT_002,CT_003,FL_002,FL_003,OR_002,OR_003]
+02-26-2025 [QuoteCreationEX] - EX_Additional_Insured - Added 34 rows
+02-26-2025 [QuoteCreationEX] - EX_BeneficialOwners - Added 5 rows
+02-18-2025 [QuoteCreationES] - Added SC_001 row to QuoteCreationES
+02-18-2025 [QuoteCreationHS] - Changed CA, MA, and LA City name to Lower case.
+01-24-2025 [QuoteCreationEX] - Added value of No and No for NC_001,CA_001 for Motorcycle/Recreational veh data on cover page
+02-21-2025 [QuoteCreationCC] - Changed Earthquake Deductible Optional Cov from 2% to new value from dropdown for TN_001
+02-25-2025 [QuoteCreationHO] - Moved optional coverages flood block, flood information block to flood coverage page, added flood excess block
+02-25-2025 [ofac_testing/QuoteCreationHO] - Moved optional coverages flood block, flood information block to flood coverage page, added flood excess block
+02-25-2025 [PremiumValidationHO] - Moved optional coverages flood block, flood information block to flood coverage page, added flood excess block
+02-25-2025 [QuoteCreationPerformance] - Moved optional coverages flood block, flood information block to flood coverage page, added flood excess block
+# March 2025
+03-19-2025 [QuoteCreationEX] - Added MN_002 row
+03-19-2025 [QuoteCreationPW] - Added 19 fields on main sheet for Named Insured = Other Entity Type, LLC/Trust Node
+03-19-2025 [QuoteCreationES] - Added 19 fields on main sheet for Named Insured = Other Entity Type, LLC/Trust Node
+03-19-2025 [QuoteCreationCO] - Added 19 fields on main sheet for Named Insured = Other Entity Type, LLC/Trust Node
+03-19-2025 [QuoteCreationEX] - Added 19 fields on main sheet for Named Insured = Other Entity Type, LLC/Trust Node
+03-25-2025 [Referrals] - Added one new referral for HS Coherent
+03-25-2025 [QuoteCreationHS] - Added new sheet and columns for Animal Information block
+03-25-2025 [QuoteCreationHS] - Added new column Basic_Brick_Veneer_Surface_Area on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Usage_Does_Pure_Insure_The_Primary_Home on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Protection_Automatic_Seismic_Shut_Off_Valve on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Protection_Interior_Sprinkler_System on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Optional_Coverages_Exclusions_Contents_Extended_Replacement_Cost on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Construction_DetailsIs_The_Home_Retrofitted_For_Earthquake? on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Construction_Details_Is_The_Home_Located_On_A_Grade_That_Is_20_In_Slope? on all transactions
+03-27-2025 [QuoteCreationHS] - Added new column Wildfire_Zone_Protection_Requirements_Openings_In_Tile_Or_Metal_Roofs_Bird_Stopped on all transactions
+03-28-2025 [QuoteCreationHS] - Changed data for - Construction_Details_Year_HVAC_Updated (2020)
+03-28-2025 [QuoteCreationHS] - Changed data for - Construction_Details_Year_Plumbing_Updated (2020)
+03-31-2025 [QuoteCreationHS] - Added Construction_Details_Barrier_Island - Yes
+03-30-2025 [QuoteCreationHO] - added END, OOS END, RNW sheets and cells
+03-21-2025 [QuoteCreationPA] - Added under Deductibles Option column value with Full Glass for MT,VT,OR,WA
+03-21-2025 [QuoteCreationHO] - Added 4 wind mitigation details (secondary water resistance etc) for new cells for MS test cases
+03-31-2025 [QuoteCreationHO] - Removed additional location for NY_101, FL_101 NB
+03-31-2025 [QuoteCreationCC] - Added tornado deductible column and data for TN_001
+03-31-2025 [QuoteCreationHS] - Added Construction_Details_Barrier_Island with default value of Yes
+03-26-2025 [QuoteCreationEX] - Added new rows [MD_002, VA_002]
+03-26-2025 [QuoteCreationPA] - Added new rows [MI_013, LA_013]
+# April 2025
+04-01-2025 [QuoteCreationHO] - added 2 cells for flood
+04-01-2025 [QuoteCreationHS] - Added new rows in additional insured sheet and principal beneficial sheet on NB
+04-08-2025 [QuoteCreationCC] - Removed Project_Address_Risk_Address_1 and similar data from columns for all TC
+04-04-2025 [QuoteCreationHO] - Added new rows GA_Forms_001, LA_Forms_001 and WA_Forms_001
+04-14-2025 [QuoteCreationPA] - Added new rows [NE_013,WI_013]
+04-14-2025 [QuoteCreationEX] - Added new rows [MN_002]
+04-16-2025 [QuoteCreationHO] - Added 6 columns related to elevation certificate block - Square_Feet_Enclosure, No_Flood_Openings_Crawls_Space, Total_Net_Area_Square_Inches, Square_Feet_Enclosure, No_Flood_Openings_Crawls_Space and Total_Net_Area_Square_Inches
+04-07-2025 [QuoteCreationHS] - Changed Named Storm Deductible for LA_001 to 15%
+04-11-2025 [QuoteCreationCC] - Changed Address for IA and SD
+# May 2025
+05-06-2025 [QuoteCreationEX] - Added 6 rows MA_002,NV_002,TX_003,PA_002,MS_002,NY_002,SC_002
+05-06-2025 [QuoteCreationPA] - Added 4 rows TN_013,HI_014,SC_013,MA_013
+05-06-2025 [QuoteCreationHO] - Added 3 rows GA_Forms_001,LA_013, WA_Forms_001
+05-16-2025 [QuoteCreationHO] - Added Primary_Flood_WouldYouQuoteNonAdmitted for CO and IL 001 to 006 NB
+05-20-2025 [QuoteCreationPA] - Added - with Full Glass - for Vehicle_Options column, states: OR, VT, WA and MT
+05-20-2025 [QuoteCreationHS] - Added new rows for Excess_Flood_What_Excess_Flood_Coverage_Limits_Do_You_Want_To_Purchase?_Contents_Amn - on all transactions
+05-20-2025 [QuoteCreationHS] - Added new rows for Excess_Flood_What_Excess_Flood_Coverage_Limits_Do_You_Want_To_Purchase?_Dwelling_Amn - on all transactions
+05-20-2025 [QuoteCreationHS] - added new column Optional_Coverages_Percentage_Of_CovA_Requested - on all transactions
+05-26-2025 [QuoteCreationHS] - added new rows for new states RI and CT
+05-30-2025 [QuoteCreationPA] - Added - with Full Glass - for Vehicle_Options column, state: CO
+05-30-2025 [QuoteCreationCC] - Changed address for UT_001
+05-30-2025 [QuoteCreationPA] - Added new rows for states MI_015, TX_013, AK_013, CA_014, LA_013, MD_013, TX_013, UT_013, VA_014, NH_014, and CO_013_Forms
+05-30-2025 [QuoteCreationEX] - Added new rows for states CA_002, GA_003, IL_002, KY_002 and MO_002
+05-30-2025 [QuoteCreationHO] - Added new rows for states WI_Forms_001 and GA_Forms_003
+05-30-2025 [QuoteCreationHS] - Added 4 columns: Would_You_Like_Non_Admitted_PF_Quote, Elevation_Certificate_Lowest_Adjacent_Finished_Grade, Elevation_Certificate_Highest_Adjacent_Finished_Grade, Elevation_Certificate_Lowest_Adjacent_Lowest_Elevation and increased amounts for location coverages - NC and NJ - NB
+05-30-2025 [QuoteCreationHO] - Changed amount to 10,000 for AOP deductible - CO and IL (from 001 to 006) NB
+# June 2025
+06-03-2025 [QuoteCreationHS] - Added 2 columns: Elevation_Certificate_Square_Feet_Enclosure, Elevation_Certificate_Total_Net_Area_Square_Inches - NB
+06-06-2025 [QuoteCreationFS] - Added 3 columns: Basement_Finish_Is, Basement_Finish_Quality, Basement_Total_SQF
+o6-06-2025 [QuoteCreationHO] - Added 2 rows LA_Forms_001 and GA_Forms_003
+o6-06-2025 [QuoteCreationPA] - Added 8 rows: MS_014, NC_014, MS_014, RI_013, FL_011, MT_014, GA_013, VT_015
+06-19-2025 [QuoteCreationHS] - Column name correction
+02-25-2025 [QuoteCreationES] - Added SC_001, LA_001, AL_001, NC_001, MS_001, GA_001, NJ_001 row to QuoteCreationES, and to b_regression
+03-17-2025 [QuoteCreationCC] - Added Project_Details_Tornado_Or_Hailstorm_Deductible column and value for TN
+04-09-2025 [QuoteCreationCC] - Changed risk address for IA, SD
+# July 2025
+07-07-2025 [QuoteCreationHS] - Added Manuscript_Endorsement_006
+07-12-2025 [QuoteCreationHO] - Added 2 columns: Do_You_Have_Basement_Or_Any_Area_Of_The_Unit, Floors_Above_Grade - NB
+07-13-2025 [QuoteCreationFS] - Changed amount to 600,000 for Location_Coverage_Contents_Limit, changed addresses for CT and MO
+07-17-2025 [QuoteCreationFS] - Added 5 columns: Endorsement_Effective_Date_END, Transaction_Type_END, Endorsement_Type_END, Description_END, Notes_END
+07-20-2025 [QuoteCreationHO] - Added Who_Is_Providing_Underlying_PF_Coverage column
+07-23-2025 [QuoteCreationCO] - Added new columns Loss_Claim_History_Any_Prior_Collection_Losses and Loss_Claim_History_Prior_Collection_Losses
+07-23-2025 [QuoteCreationCO] - Added new sheet CO_Collections_Loss_History
+07-24-2025 [QuoteCreationCO] - Added Coverage Schedule Agreed Value Block
+07-25-2025 [QuoteCreationCO] - Added Manuscript Endorsement Sheet
+07-25-2025 [QuoteCreationCO] - Added Manuscript Endorsement column
+07-25-2025 [QuoteCreationHO] - Changed Hurricane_Fortification to None for NC_001
+07-26-2025 [QuoteCreationHO] - Changed amount to 10,000 for AOP deductible - CO and IL TC_004 and 2,500 for TC_005 - HO_AdditionalLocations
+07-27-2025 [QuoteCreationHO] - Added 5 columns: Do_You_Have_Basement_Or_Any_Area_Of_The_Unit, Floors_Above_Grade, Basement_Finish_Is, Basement_Finish_Quality, Basement_Total_SQF - HO_AdditionalLocations
+07-28-2025 [QuoteCreationCO] - Added Subjectivities Sheet
+07-28-2025 [QuoteCreationCO] - Added Manual Subjectivities column
+07-28-2025 [QuoteCreationCO] - Added Optional Coverage page
+07-31-2025 [QuoteCreationFS] - Added 3 columns: Do_You_Have_Basement_Or_Any_Area_Of_The_Unit, Is_Basement_Or_Any_Area_Dwelling_Below_Ground_Level, Primary_Flood_Policy
+07-31-2025 [QuoteCreationPA] - Added Yes for Vehicle_Details_Agree_To_Use_PURE_Direct_Repair_Program_10_Physical_Damage_Discount_END on Additional Vehicles END Tab
+07-31-2025 [QuoteCreationPA] - Added MA_001_ADD on END Additional Vehicles Sheet
+# August 2025
+08-01-2025 [QuoteCreationCO] - Added Collections_Schedule_Collection_Items column
+08-01-2025 [QuoteCreationCO] - Added CO_Collections_Classes sheet
+08-01-2025 [QuoteCreationCO] - Removed all columns related to Schedule Coverage
+08-04-2025 [QuoteCreationCO] - Added new columns Add_Worldwide_Jewelry,Add_Bank_Vaulted_Jewelry.......for all classes
+08-06-2025 [QuoteCreationHO] - Changed a lot of data on HO_AdditionalLocations sheet, please copy that one
+08-12-2025 [QuoteCreationHO] - Added excess flood questions
+08-13-2025 [QuoteCreationHO] - Primary_Flood_Coverage_Basement_Dwelling -> Primary_Flood_Coverage_Basement_Improvements
+08-20-2025 [QuoteCreationHS] - Added Is_Basement_Or_Any_Area_Dwelling_Below_Ground_Level
+08-20-2025 [QuoteCreationFS] - Added 2 new sheets - QuoteCreatorHOFS, QuoteCreatorHSFS, set previous losses to no, number of floors decreased to 3
+08-20-2025 [QuoteCreationFS] - Added 3 columns to HSFS - Existing_Agency_Client, Non_Renewed_Or_Declined_Coverage, Dangerous_Dogs, set value for Policy_Delivery_Option
+08-26-2025 [QuoteCreationFS] - Contents value decreased to 4.5M
+# September 2025
+09-05-2025 [QuoteCreationFS] - Location coverages decreased - HOFS/HSFS
+09-10-2025 [QuoteCreationEX] - Added Additional_Watercraft column, added 2 new columns inside Additional_Insured sheet, and added 2 Specific sheets
+09-17-2025 [QuoteCreationEX] - Removed Additional_Insured values for MI_001
+09-17-2025 [QuoteCreationHS] - Changed Replacement/OtherS/Contents/LossOfUse/WF Sublimit for WY_001
+09-17-2025 [QuoteCreationHS] - Changed Beneficial Owner sheet DOB column from Date to Text type for all IDs
+10-02-2025 [QuoteCreationHO] - Added Wind_Mitigation_Fortified_Designation value = None for all KY_ test cases
+# October
+10-06-2025 [QuoteCreationFS] - Location coverages decreased - HOFS - RI, PA; Duplicate removed - VA
+10-13-2025 [QuoteCreationFS] - Agency changed for HOFS QA - RI, HSFS - RI_001 added
+10-13-2025 [QuoteCreationHO] - Wind_Mitigation_Fortified_Designation value added for NC
+10-14-2025 [QuoteCreationES] - Changed Incident Num from 1 to empty for GA_001, AL_001
+10-20-2025 [QuoteCreationHO] - Reverted RI_001 QA/STG agency to System Validation Only

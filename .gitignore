@@ -1,0 +1,8 @@
+.idea
+results
+target
+*.iml
+.gradle
+.allure
+.allure/**
+.xmls/d_other/General.xml

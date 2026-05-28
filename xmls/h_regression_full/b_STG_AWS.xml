@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Full Regression Tests - AWS STG" parallel="classes" data-provider-thread-count="5" thread-count="4">
+
+    <parameter name="WAIT_TIME" value="35"/>
+    <parameter name="ENV" value="AWS_STG"/>
+    <parameter name="BROWSER" value="CHROME_H"/>
+    <parameter name="QUIT" value="Yes"/>
+    <parameter name="SCREENSHOTS" value="Yes"/>
+    <parameter name="SOFT_ASSERT" value="Yes"/>
+
+    <test enabled="true" name="Full Regression Suite">
+        <classes>
+            <class name="runners.h_regression_full.ofac.OFACSuite"/>
+            <class name="runners.h_regression_full.predictive_home.PredictiveHomeSuite"/>
+            <class name="runners.h_regression_full.predictive_auto.PredictiveAutoSuite"/>
+            <class name="runners.h_regression_full.predictive_excess.PredictiveExcessSuite"/>
+            <class name="runners.h_regression_full.flood.FloodSuite"/>
+            <class name="runners.h_regression_full.air.AIRSuite"/>
+            <class name="runners.h_regression_full.rms.RMSSuite"/>
+            <class name="runners.h_regression_full.census_tract.CensusTractSuite"/>
+            <class name="runners.h_regression_full.weather_analytics.WeatherAnalyticsSuite"/>
+            <class name="runners.h_regression_full.home_clue.HomeCLUESuite"/>
+            <class name="runners.h_regression_full.auto_clue.AutoCLUESuite"/>
+            <!--            <class name="runners.h_regression_full.premium_comparison.LoadAndCompareSuite"/>-->
+            <class name="runners.h_regression_full.excess_clue.ExcessCLUESuite"/>
+        </classes>
+    </test>
+
+    <!--  Failed Tests  -->
+    <test enabled="false" name="Rerun Failures">
+        <classes>
+            <class name="runners.d_other.FailuresRunner"/>
+        </classes>
+    </test>
+
+</suite>

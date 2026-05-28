@@ -1,0 +1,67 @@
+version: 0.2
+
+env:
+  variables:
+    EXTRACTED_RESULTS: "empty"
+    REPORT_URL: "empty"
+
+phases:
+  install:
+    commands:
+      - DATETIME=$(date +"%Y-%m-%d-%H-%M-%S")
+      #      - yum list libstdc*
+      #      - npm version
+      #      - sudo yum update -y
+      #      - sudo yum install java-1.8.0-openjdk-headless
+      - alternatives --set java /usr/lib/jvm/java-21-amazon-corretto.x86_64/bin/java
+      - alternatives --auto java
+
+    #   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+#      - wget https://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-stable-126.0.6478.182-1.x86_64.rpm
+      #      - wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure_2.27.0-1.noarch.rpm
+    #   - sudo yum install google-chrome-stable_current_x86_64.rpm -y
+      - cat tools/chrome-stable-126.0.6478.182-1.x86_64_part_* > tools/google-chrome.rpm
+      - sudo yum install tools/google-chrome.rpm -y
+
+
+      
+  #      - sudo rpm -i allure_2.27.0-1.noarch.rpm
+  #      - npm install -g --save-dev allure-commandline
+  pre_build:
+    commands:
+      - echo This is updated build 07/30
+      - echo $DATETIME
+  build:
+    on-failure: CONTINUE
+    commands:
+      - echo Build started on `date` in PROD
+      - mvn -e clean test
+        -Dsurefire.suiteXmlFiles=xmls/a_smoke_extended/d_PROD_Jenkins.xml > build.log 2>&1
+      - echo build.log
+  post_build:
+    commands:
+      - echo $DATETIME
+      - echo Build completed on `date`
+    #   - allure generate -c results/allure-results -o results/${DATETIME}
+      - ls
+      - cd results
+      - cp -r ../target/surefire-reports .
+      - cp ../target/cucumber-report/cucumber.json .
+      - cp AllPolicyIDs.txt /tmp/AllPolicyIDs.txt
+      - zip -r ${DATETIME}.zip allure-results
+      - ls
+reports:
+  first-test-group-report:
+    files:
+      - "**/*"
+    base-directory: target/surefire-reports/junitreports
+    discard-paths: no
+artifacts:
+  files:
+    - ${DATETIME}.zip
+    - "target/surefire-reports/junitreports/**"
+    - "allure-results/**"
+    - "**/*"
+    - /tmp/AllPolicyIDs.txt
+    - "../target/**/*"
+  base-directory: results

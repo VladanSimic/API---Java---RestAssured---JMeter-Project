@@ -1,0 +1,2557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Predictive Analytics US">
+      <stringProp name="TestPlan.comments">STG ENV</stringProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics FL">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+        <longProp name="ThreadGroup.duration">1200</longProp>
+
+<!--         new code -->
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+
+<!--         the end of new code -->
+
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;777219680259&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;FL&quot;,&#xd;
+                &quot;county&quot;: &quot;Walton&quot;,&#xd;
+                &quot;territory&quot;: &quot;Panhandle FL Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2016,&#xd;
+                &quot;sqaureFootage&quot;: 3110.0,&#xd;
+                &quot;replacementCost&quot;: 2100000.0,&#xd;
+                &quot;otherStructures&quot;: 420000.0,&#xd;
+                &quot;contents&quot;: 1050000.0,&#xd;
+                &quot;lossOfUse&quot;: 420000.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 2,&#xd;
+                &quot;aopDeductible&quot;: 10000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;No Coverage&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Gable&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 1,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;3&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;moreThanOneHomeIndicator&quot;: &quot;T&quot;,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;2&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 19090.0,&#xd;
+                    &quot;windPremium&quot;: 13018.9,&#xd;
+                    &quot;nonWindPremium&quot;: 4770.51,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 250.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;lteq 1 mile&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;NA&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;Class A - Hurricane Impact Glass&quot;,&#xd;
+                &quot;roofAge&quot;: 9.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;0&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;1750 - 2000 ft&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 675.0,&#xd;
+                &quot;sqftStory&quot;: 1555.0,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;5%&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;5%&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Other Roof Deck or Lumber Roof Deck&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;1001 ft - 1 mile&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;Port Washington Coastal&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 0,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;distCoastFromCoreLogicRiskMeter&quot;: &quot;1/4 - 1 mile&quot;,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 15,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 5,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;windowAndOtherOpeningProtectionTypeName&quot;: &quot;Class A - Hurricane Impact Glass&quot;,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;1001 ft - 1 mile&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-86.086304&quot;,&#xd;
+                &quot;latitude&quot;: &quot;30.307887&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 1,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;06/29/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 2,&#xd;
+            &quot;numberOfProperties&quot;: 2&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 727,&#xd;
+    &quot;policyImageId&quot;: &quot;777219679249&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report FL">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<!-- <stringProp name="filename">${__P(resultFile,)}</stringProp> -->
+
+
+<stringProp name="filename">src/test/resources/jmeter/results/predictive_analytics_STG_overview.csv</stringProp>
+
+            <boolProp name="useGroupName">true</boolProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics CA" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;774662030219&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;CA&quot;,&#xd;
+                &quot;county&quot;: &quot;San Mateo&quot;,&#xd;
+                &quot;territory&quot;: &quot;Bay Area Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2021,&#xd;
+                &quot;sqaureFootage&quot;: 9233.0,&#xd;
+                &quot;replacementCost&quot;: 0.0,&#xd;
+                &quot;otherStructures&quot;: 0.0,&#xd;
+                &quot;contents&quot;: 500000.0,&#xd;
+                &quot;lossOfUse&quot;: 0.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 5000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Hip&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 6,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;2&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 2028.49,&#xd;
+                    &quot;windPremium&quot;: 0.0,&#xd;
+                    &quot;nonWindPremium&quot;: 1676.05,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 100.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;8&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;1 - 5 miles&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;Low&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;NA&quot;,&#xd;
+                &quot;roofAge&quot;: 4.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;17500 - 17750 ft&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 54.0,&#xd;
+                &quot;sqftStory&quot;: 0.0,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;5000&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Wood Shingle / Wood Shake - Untreated&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;1 mile - 5 miles&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;Other - San Jose&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 0,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 2,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 72,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 2,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 2,&#xd;
+                &quot;earthquakeSoilGradeName&quot;: &quot;2.76 - 3.75&quot;,&#xd;
+                &quot;constructionExteriorWallCoveringTypeName&quot;: &quot;Wood Siding or Wood Shakes&quot;,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;1 mile - 5 miles&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-122.213648&quot;,&#xd;
+                &quot;latitude&quot;: &quot;37.45216&quot;,&#xd;
+                &quot;mmiEqValue&quot;: &quot;8.7&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 2,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;08/26/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 0,&#xd;
+            &quot;numberOfProperties&quot;: 0&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 0,&#xd;
+    &quot;policyImageId&quot;: &quot;774662028869&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report CA" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics TX" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;777082274269&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;TX&quot;,&#xd;
+                &quot;county&quot;: &quot;Dallas&quot;,&#xd;
+                &quot;territory&quot;: &quot;North TX Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2025,&#xd;
+                &quot;sqaureFootage&quot;: 6767.0,&#xd;
+                &quot;replacementCost&quot;: 6000000.0,&#xd;
+                &quot;otherStructures&quot;: 1200000.0,&#xd;
+                &quot;contents&quot;: 3000000.0,&#xd;
+                &quot;lossOfUse&quot;: 1200000.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Brick - Veneer&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 25000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;1000000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Other&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;1&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 16867.72,&#xd;
+                    &quot;windPremium&quot;: 9981.83,&#xd;
+                    &quot;nonWindPremium&quot;: 7320.89,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 566.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;b_l_a_n_k&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;b_l_a_n_k&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;N/A for Texas&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;Low&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;None&quot;,&#xd;
+                &quot;roofAge&quot;: 0.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;NA&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 887.0,&#xd;
+                &quot;sqftStory&quot;: 3383.5,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;2%&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;2%&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Asphalt Shingle&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;N/A&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 2,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 0,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;distCoastFromCoreLogicRiskMeter&quot;: &quot;More than 50 miles from the Shore&quot;,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 580,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 99,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;windowAndOtherOpeningProtectionTypeName&quot;: &quot;None&quot;,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;N/A&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-96.790954&quot;,&#xd;
+                &quot;latitude&quot;: &quot;32.899845&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 2,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;08/29/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 1,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 2,&#xd;
+            &quot;numberOfProperties&quot;: 3&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 934,&#xd;
+    &quot;policyImageId&quot;: &quot;777082273119&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report TX" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics WA" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;777184059989&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;WA&quot;,&#xd;
+                &quot;county&quot;: &quot;Kitsap&quot;,&#xd;
+                &quot;territory&quot;: &quot;Pacific Northwest Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 1992,&#xd;
+                &quot;sqaureFootage&quot;: 3753.0,&#xd;
+                &quot;replacementCost&quot;: 1500000.0,&#xd;
+                &quot;otherStructures&quot;: 300000.0,&#xd;
+                &quot;contents&quot;: 750000.0,&#xd;
+                &quot;lossOfUse&quot;: 300000.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 1,&#xd;
+                &quot;aopDeductible&quot;: 5000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Other&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 10,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 2,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 2,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;4&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 3081.16,&#xd;
+                    &quot;windPremium&quot;: 0.0,&#xd;
+                    &quot;nonWindPremium&quot;: 3212.07,&#xd;
+                    &quot;earthquakePremium&quot;: 1352.52,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 1477.52&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;gt 5 miles&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;Moderate&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;NA&quot;,&#xd;
+                &quot;roofAge&quot;: 8.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;9000 - 9250 ft&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 400.0,&#xd;
+                &quot;sqftStory&quot;: 1876.5,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;5000&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Other&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;&gt; 5 miles&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 2017,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 2,&#xd;
+                &quot;distCoastFromCoreLogicRiskMeter&quot;: &quot;1 - 5 miles&quot;,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 309,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 0,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 2,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 2,&#xd;
+                &quot;earthquakeSoilGradeName&quot;: &quot;1.76 - 2.25&quot;,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;&gt; 5 miles&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-122.652637&quot;,&#xd;
+                &quot;latitude&quot;: &quot;47.676224&quot;,&#xd;
+                &quot;mmiEqValue&quot;: &quot;7.6&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 2,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;09/19/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 2,&#xd;
+            &quot;numberOfProperties&quot;: 2&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 821,&#xd;
+    &quot;policyImageId&quot;: &quot;777184057259&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report WA" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>true</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <fileName>true</fileName>
+                <hostname>true</hostname>
+                <threadCounts>true</threadCounts>
+                <sampleCount>true</sampleCount>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics CT" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;777202983999&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;CT&quot;,&#xd;
+                &quot;county&quot;: &quot;Middlesex&quot;,&#xd;
+                &quot;territory&quot;: &quot;Eastern CT Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2005,&#xd;
+                &quot;sqaureFootage&quot;: 4582.0,&#xd;
+                &quot;replacementCost&quot;: 2713413.0,&#xd;
+                &quot;otherStructures&quot;: 615213.0,&#xd;
+                &quot;contents&quot;: 1576614.0,&#xd;
+                &quot;lossOfUse&quot;: 542683.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 5000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Other&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 1,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 1,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 1&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;8&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 8784.0,&#xd;
+                    &quot;windPremium&quot;: 1259.13,&#xd;
+                    &quot;nonWindPremium&quot;: 7850.13,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 5.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;1 - 5 miles&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;NA&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;None&quot;,&#xd;
+                &quot;roofAge&quot;: 20.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;0&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;8250 - 8500 ft&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 592.0,&#xd;
+                &quot;sqftStory&quot;: 2291.0,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;N/A - AOP Ded Applies&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;5000&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Other&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;1mile - 5 miles&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 2005,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;distCoastFromCoreLogicRiskMeter&quot;: &quot;More than 50 miles from the Shore&quot;,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 39,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 4,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;windowAndOtherOpeningProtectionTypeName&quot;: &quot;None&quot;,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;1mile - 5 miles&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-72.375462&quot;,&#xd;
+                &quot;latitude&quot;: &quot;41.331634&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 2,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 1,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;10/26/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 1,&#xd;
+            &quot;numberOfProperties&quot;: 2&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 863,&#xd;
+    &quot;policyImageId&quot;: &quot;777202983679&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report CT" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics OH" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;229802506319&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;OH&quot;,&#xd;
+                &quot;county&quot;: &quot;Cuyahoga&quot;,&#xd;
+                &quot;territory&quot;: &quot;Ohio Valley Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 1974,&#xd;
+                &quot;sqaureFootage&quot;: 3372.0,&#xd;
+                &quot;replacementCost&quot;: 1500000.0,&#xd;
+                &quot;otherStructures&quot;: 120800.0,&#xd;
+                &quot;contents&quot;: 605000.0,&#xd;
+                &quot;lossOfUse&quot;: 300000.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 5000,&#xd;
+                &quot;numberOfFloors&quot;: 1,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Gable&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;4&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 2338.63,&#xd;
+                    &quot;windPremium&quot;: 0.0,&#xd;
+                    &quot;nonWindPremium&quot;: 2339.06,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 125.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;gt 5 miles&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;NA&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;NA&quot;,&#xd;
+                &quot;roofAge&quot;: 13.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;NA&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 445.0,&#xd;
+                &quot;sqftStory&quot;: 3372.0,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;1%&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;1%&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Asphalt Shingle&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;&gt; 5 miles&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 2012,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 0,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 0,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 2012,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;&gt; 5 miles&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-81.402621&quot;,&#xd;
+                &quot;latitude&quot;: &quot;41.545316&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 2,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;09/09/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 1,&#xd;
+            &quot;numberOfProperties&quot;: 1&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 769,&#xd;
+    &quot;policyImageId&quot;: &quot;229802481619&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report OH" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics ID" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;776767522829&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;ID&quot;,&#xd;
+                &quot;county&quot;: &quot;Blaine&quot;,&#xd;
+                &quot;territory&quot;: &quot;Pacific Northwest Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2002,&#xd;
+                &quot;sqaureFootage&quot;: 3772.0,&#xd;
+                &quot;replacementCost&quot;: 0.0,&#xd;
+                &quot;otherStructures&quot;: 0.0,&#xd;
+                &quot;contents&quot;: 3000000.0,&#xd;
+                &quot;lossOfUse&quot;: 0.0,&#xd;
+                &quot;primaryResidence&quot;: 2,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 25000,&#xd;
+                &quot;numberOfFloors&quot;: 3,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 68,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;3&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 3849.69,&#xd;
+                    &quot;windPremium&quot;: 0.0,&#xd;
+                    &quot;nonWindPremium&quot;: 4132.99,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 0.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;6&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;gt 5 miles&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;High&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;NA&quot;,&#xd;
+                &quot;roofAge&quot;: 23.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;NA&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 795.0,&#xd;
+                &quot;sqftStory&quot;: 0.0,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;25000&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 0,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 2,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 0,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 0,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;wildfireSlopeTopographyKey&quot;: &quot;C. Home is downslope (more than 20 degrees) to wildfire exposure&quot;,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 2,&#xd;
+                &quot;wildfireCommunitySizeKey&quot;: &quot;D. Large community (over 100 homes)&quot;,&#xd;
+                &quot;wildfireRoadAccessCountKey&quot;: &quot;A. Multiple (2+) access points to the community with only one access point to the home&quot;,&#xd;
+                &quot;earthquakeSoilGradeName&quot;: &quot;1.00 - 1.25&quot;,&#xd;
+                &quot;constructionExteriorWallCoveringTypeName&quot;: &quot;Stucco&quot;,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-114.385365&quot;,&#xd;
+                &quot;latitude&quot;: &quot;43.690696&quot;,&#xd;
+                &quot;mmiEqValue&quot;: &quot;&lt;= 7.3&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 1,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;08/11/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 2,&#xd;
+            &quot;numberOfProperties&quot;: 9&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 821,&#xd;
+    &quot;policyImageId&quot;: &quot;776767514299&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report ID" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics NY" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;776280415369&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;NY&quot;,&#xd;
+                &quot;county&quot;: &quot;Suffolk&quot;,&#xd;
+                &quot;territory&quot;: &quot;Suffolk NY Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2021,&#xd;
+                &quot;sqaureFootage&quot;: 3308.0,&#xd;
+                &quot;replacementCost&quot;: 3000000.0,&#xd;
+                &quot;otherStructures&quot;: 600000.0,&#xd;
+                &quot;contents&quot;: 900000.0,&#xd;
+                &quot;lossOfUse&quot;: 600000.0,&#xd;
+                &quot;primaryResidence&quot;: 2,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 5000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Hip&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 2&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;3&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;moreThanOneHomeIndicator&quot;: &quot;T&quot;,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 14850.0,&#xd;
+                    &quot;windPremium&quot;: 6649.81,&#xd;
+                    &quot;nonWindPremium&quot;: 6737.73,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 130.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;lteq 1 mile&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;NA&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;None&quot;,&#xd;
+                &quot;roofAge&quot;: 4.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;3750 - 4000 ft&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 907.0,&#xd;
+                &quot;sqftStory&quot;: 1654.0,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;50,000&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;50,000&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Other&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;2501 ft - 1 mile&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 2021,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;distCoastFromCoreLogicRiskMeter&quot;: &quot;1/4 - 1 mile&quot;,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 22,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 3,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;windowAndOtherOpeningProtectionTypeName&quot;: &quot;None&quot;,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;2501 ft - 1 mile&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-72.589764&quot;,&#xd;
+                &quot;latitude&quot;: &quot;40.839555&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 1,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;08/29/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 1,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 2,&#xd;
+            &quot;numberOfProperties&quot;: 2&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 788,&#xd;
+    &quot;policyImageId&quot;: &quot;776280414779&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report NY" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics MI" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;775876494869&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;MI&quot;,&#xd;
+                &quot;county&quot;: &quot;Berrien&quot;,&#xd;
+                &quot;territory&quot;: &quot;Michigan Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 2022,&#xd;
+                &quot;sqaureFootage&quot;: 5437.0,&#xd;
+                &quot;replacementCost&quot;: 4000000.0,&#xd;
+                &quot;otherStructures&quot;: 800000.0,&#xd;
+                &quot;contents&quot;: 2000000.0,&#xd;
+                &quot;lossOfUse&quot;: 800000.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 0,&#xd;
+                &quot;aopDeductible&quot;: 10000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Hip&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 1,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 1&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;4&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 5306.46,&#xd;
+                    &quot;windPremium&quot;: 0.0,&#xd;
+                    &quot;nonWindPremium&quot;: 5601.62,&#xd;
+                    &quot;earthquakePremium&quot;: 0.0,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 591.0&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;gt 1000 ft&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;gt 5 miles&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;NA&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;NA&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;NA&quot;,&#xd;
+                &quot;roofAge&quot;: 3.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;1&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;NA&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 736.0,&#xd;
+                &quot;sqftStory&quot;: 2718.5,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;N/A - AOP Ded Applies&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;10000&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Asphalt Shingle&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;&gt; 5 miles&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 0,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 0,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 4,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;&gt; 5 miles&quot;,&#xd;
+                &quot;badBuildingInd&quot;: &quot;F&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-86.741455&quot;,&#xd;
+                &quot;latitude&quot;: &quot;41.803974&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 1,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;09/12/2025&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 2,&#xd;
+            &quot;numberOfProperties&quot;: 2&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 909,&#xd;
+    &quot;policyImageId&quot;: &quot;775876493779&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report MI" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Predictive Analytics NJ" enabled="true">
+<!--         <intProp name="ThreadGroup.num_threads">50</intProp> -->
+<!--         <intProp name="ThreadGroup.ramp_time">1</intProp> -->
+
+<!-- new code -->
+
+<stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(rampUpSeconds,1)}</stringProp>
+<stringProp name="ThreadGroup.duration">${__P(durationSeconds,10)}</stringProp>
+
+<!-- end of new code -->
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">${__P(sameUserOnNextIteration,false)}</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">${__P(onSampleError,continue)}</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Model API" enabled="true">
+          <stringProp name="HTTPSampler.domain">ecs01.aws.purehnw.online</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">predictive-v2/analysis/GBM_model_python_1659383892139_3658/1233545466</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;locations&quot;: [&#xd;
+        {&#xd;
+            &quot;id&quot;: &quot;777171708829&quot;,&#xd;
+            &quot;location&quot;: {&#xd;
+                &quot;state&quot;: &quot;NJ&quot;,&#xd;
+                &quot;county&quot;: &quot;Bergen&quot;,&#xd;
+                &quot;territory&quot;: &quot;New Jersey Territory&quot;,&#xd;
+                &quot;yearBuilt&quot;: 192,&#xd;
+                &quot;sqaureFootage&quot;: 4134.0,&#xd;
+                &quot;replacementCost&quot;: 2975000.0,&#xd;
+                &quot;otherStructures&quot;: 275000.0,&#xd;
+                &quot;contents&quot;: 1253931.0,&#xd;
+                &quot;lossOfUse&quot;: 595000.0,&#xd;
+                &quot;primaryResidence&quot;: 1,&#xd;
+                &quot;constructionType&quot;: &quot;Frame&quot;,&#xd;
+                &quot;distanceToCoast&quot;: 0.0,&#xd;
+                &quot;numberOfMortagees&quot;: 1,&#xd;
+                &quot;aopDeductible&quot;: 5000,&#xd;
+                &quot;numberOfFloors&quot;: 2,&#xd;
+                &quot;liabilityLimit&quot;: &quot;500000&quot;,&#xd;
+                &quot;roofShape&quot;: &quot;Other&quot;,&#xd;
+                &quot;exWindIndicator&quot;: 2,&#xd;
+                &quot;wildFireScore&quot;: 0,&#xd;
+                &quot;protections&quot;: {&#xd;
+                    &quot;burglarAlarm&quot;: 1,&#xd;
+                    &quot;externalPerimeterGate&quot;: 2,&#xd;
+                    &quot;fireAlarm&quot;: 1,&#xd;
+                    &quot;fulltimeCareTaker&quot;: 2,&#xd;
+                    &quot;guardedGate&quot;: 2,&#xd;
+                    &quot;gasLeakDetector&quot;: 2,&#xd;
+                    &quot;lighteningProtectionSystem&quot;: 2,&#xd;
+                    &quot;lowTempMonitoringSystem&quot;: 2,&#xd;
+                    &quot;permenantInstalledGenerator&quot;: 1&#xd;
+                },&#xd;
+                &quot;additionalRiskFactors&quot;: {&#xd;
+                    &quot;priorHomeLossWater&quot;: 0,&#xd;
+                    &quot;priorHomeLossNonWater&quot;: 0,&#xd;
+                    &quot;locationVacant&quot;: 2,&#xd;
+                    &quot;locationRentedToOthers&quot;: 2,&#xd;
+                    &quot;protectionClass&quot;: &quot;8&quot;,&#xd;
+                    &quot;renovationYear&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossGTE2500&quot;: 0,&#xd;
+                    &quot;priorHomeExCATLossLT2500&quot;: 0,&#xd;
+                    &quot;priorHomeCATLossLT2500&quot;: 0,&#xd;
+                    &quot;underlyingNFIP&quot;: 0,&#xd;
+                    &quot;doYouPurchaseNFIP&quot;: 0,&#xd;
+                    &quot;floodZone&quot;: &quot;PRP - B/C/X&quot;,&#xd;
+                    &quot;baseElevation&quot;: 99999.0,&#xd;
+                    &quot;elevationOfResidence&quot;: 99999.0,&#xd;
+                    &quot;basementIndicator&quot;: 0,&#xd;
+                    &quot;floodLoss&quot;: 0,&#xd;
+                    &quot;surgeScore&quot;: &quot;N/A&quot;,&#xd;
+                    &quot;residenceRenovation&quot;: &quot;2&quot;&#xd;
+                },&#xd;
+                &quot;premiums&quot;: {&#xd;
+                    &quot;locationPremium&quot;: 7779.65,&#xd;
+                    &quot;windPremium&quot;: 0.0,&#xd;
+                    &quot;nonWindPremium&quot;: 8354.65,&#xd;
+                    &quot;earthquakePremium&quot;: 1487.5,&#xd;
+                    &quot;floodPremium&quot;: 0.0,&#xd;
+                    &quot;optionalCoveragePremium&quot;: 2730.5&#xd;
+                },&#xd;
+                &quot;residenceType&quot;: &quot;3&quot;,&#xd;
+                &quot;dtcInFeet&quot;: &quot;b_l_a_n_k&quot;,&#xd;
+                &quot;dtcInMiles&quot;: &quot;b_l_a_n_k&quot;,&#xd;
+                &quot;wildFireLevel&quot;: &quot;NA&quot;,&#xd;
+                &quot;priorRoofDamage&quot;: &quot;Low&quot;,&#xd;
+                &quot;openProtection&quot;: &quot;None&quot;,&#xd;
+                &quot;roofAge&quot;: 23.0,&#xd;
+                &quot;policyType&quot;: &quot;HO&quot;,&#xd;
+                &quot;appraisalModelInd&quot;: &quot;0&quot;,&#xd;
+                &quot;numOfHelocMortgagee&quot;: 0,&#xd;
+                &quot;oceanDistancetoCoastRiskmeter&quot;: &quot;More Than 6 Miles From the Coast&quot;,&#xd;
+                &quot;costPerSquareFoot&quot;: 720.0,&#xd;
+                &quot;sqftStory&quot;: 2067.0,&#xd;
+                &quot;hurrWindDeductible&quot;: &quot;Not Available&quot;,&#xd;
+                &quot;hurrWindDeductibleOrAOP&quot;: &quot;5000&quot;,&#xd;
+                &quot;roofCovering&quot;: &quot;Other&quot;,&#xd;
+                &quot;dtcOnScreen&quot;: &quot;N/A&quot;,&#xd;
+                &quot;aggregationZone&quot;: &quot;N/A&quot;,&#xd;
+                &quot;windpoolEligibleInd&quot;: 1,&#xd;
+                &quot;yearRoofReplacedNo&quot;: 2001,&#xd;
+                &quot;constructionHomeSupportedByStiltsPostsInd&quot;: 0,&#xd;
+                &quot;distCoastFromCoreLogicRiskMeter&quot;: &quot;20 - 50 miles&quot;,&#xd;
+                &quot;elevationFromCoreLogicRiskMeter&quot;: 517,&#xd;
+                &quot;buildingCodeEffectivenessGradingNo&quot;: 99,&#xd;
+                &quot;automaticSeismicShutOffValveInd&quot;: 0,&#xd;
+                &quot;windowAndOtherOpeningProtectionTypeName&quot;: &quot;None&quot;,&#xd;
+                &quot;wildfireCombustibleDeckInd&quot;: 0,&#xd;
+                &quot;constructionHomeRetrofittedForEarthquakeInd&quot;: 0,&#xd;
+                &quot;yearRenovatedNo&quot;: 0,&#xd;
+                &quot;waterLeakSystemInd&quot;: &quot;None&quot;,&#xd;
+                &quot;distanceToCoastName&quot;: &quot;N/A&quot;,&#xd;
+                &quot;longitude&quot;: &quot;-74.213891&quot;,&#xd;
+                &quot;latitude&quot;: &quot;40.983211&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;policy&quot;: {&#xd;
+        &quot;autoCompanionCredit&quot;: 1,&#xd;
+        &quot;jewelryCompanionCredit&quot;: 1,&#xd;
+        &quot;policyEffectiveDate&quot;: &quot;10/23/2024&quot;&#xd;
+    },&#xd;
+    &quot;additionalInfo&quot;: {&#xd;
+        &quot;excess&quot;: {&#xd;
+            &quot;numberOfOperatorsUnder22&quot;: 0,&#xd;
+            &quot;numberOfOperators22orOlder&quot;: 0,&#xd;
+            &quot;numberOfProperties&quot;: 0&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;creditScore&quot;: 776,&#xd;
+    &quot;policyImageId&quot;: &quot;777171708549&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report NJ">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+<!--             <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+<!--           <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report TOTAL">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+<!--         <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree all">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+<!--         <stringProp name="filename"></stringProp> -->
+
+<stringProp name="filename">${__P(resultFile,)}</stringProp>
+
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Coherent">
+    <parameter name="APIOnly" value="Yes"/>
+
+    <parameter name="versionID" value="38ed56bd-3849-4f1f-b119-223077b8486b"/>
+    <parameter name="token" value=" "/>
+
+    <test enabled="true" name="Mapping Test">
+        <classes>
+            <class name="runners.i_api.Coherent"/>
+        </classes>
+    </test>
+
+</suite>

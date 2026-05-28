@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Regression Tests PRE PROD" parallel="classes" data-provider-thread-count="16" thread-count="1">
+
+    <parameter name="WAIT_TIME" value="45"/>
+    <parameter name="ENV" value="PRE_PROD"/>
+    <parameter name="BROWSER" value="CHROME_H"/>
+    <parameter name="QUIT" value="Yes"/>
+    <parameter name="SCREENSHOTS" value="Yes"/>
+    <parameter name="ASSERTIONS" value="No"/>
+
+    <!--    New Main Runner with shuffle -->
+    <test enabled="true" name="General Performance Regression - PRE PROD">
+        <classes>
+            <class name="runners.c_performance.base_regression.BaseRegressionPerformanceRunner"/>
+        </classes>
+    </test>
+
+    <!--    Old standard way-->
+    <test enabled="false" name="General Performance Regression - PRE PROD">
+        <classes>
+            <class name="runners.b_regression.ho.nb.sl.NewBusiness_Homeowners_SingleLocation"/>
+            <class name="runners.b_regression.pa.nb.NewBusiness_PrivatePassenger"/>
+            <class name="runners.b_regression.ex.NewBusiness"/>
+            <class name="runners.b_regression.co.NewBusiness"/>
+            <class name="runners.b_regression.hs.NewBusiness"/>
+            <class name="runners.b_regression.pw.NewBusiness"/>
+            <class name="runners.b_regression.es.NewBusiness"/>
+            <class name="runners.b_regression.cc.NewBusiness_Endorsement_PolicyExtension"/>
+        </classes>
+    </test>
+
+    <!--  HO  -->
+    <test enabled="false" name="Homeowners Base NB - Homeowner">
+        <classes>
+            <class name="runners.b_regression.ho.nb.sl.NewBusiness_Homeowners_SingleLocation"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Homeowners Base NB - Condo">
+        <classes>
+            <class name="runners.b_regression.ho.nb.sl.NewBusiness_Condo_SingleLocation"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Homeowners Base NB - Tenants">
+        <classes>
+            <class name="runners.b_regression.ho.nb.ml.NewBusiness_Tenants_MultipleLocations"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Homeowners Base NB - Homeowner Multi Location">
+        <classes>
+            <class name="runners.b_regression.ho.nb.ml.NewBusiness_Condo_MultipleLocations"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Homeowners Base NB - Condo Multi Location">
+        <classes>
+            <class name="runners.b_regression.ho.nb.sl.NewBusiness_Tenants_SingleLocation"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Homeowners Base NB - Tenants Multi Location">
+        <classes>
+            <class name="runners.b_regression.ho.nb.ml.NewBusiness_Homeowners_MultipleLocations"/>
+        </classes>
+    </test>
+
+    <!--  PA  -->
+    <test enabled="false" name="Personal Auto Base NB - Private Passenger">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_PrivatePassenger"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Classic Collectors Car">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_ClassicCollectorsCar"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Antique Collectors Car">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_AntiqueCollectorsCar"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Exotic Collectors Car">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_ExoticCollectorsCar"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Golf Carts">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_GolfCarts"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Motor Home">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_MotorHome"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Recreational Trailer">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_RecreationalTrailer"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Motorcycles Mopeds Scooters">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_MotorcyclesMopedsScooters"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Collectors Trailer">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_CollectorsTrailer"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Snowmobiles">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_Snowmobiles"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - All Terrain Vehicles">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_AllTerrainVehicles"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Dune Buggies">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_DuneBuggies"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Personal Auto Base NB - Travel Trailer">
+        <classes>
+            <class name="runners.b_regression.pa.nb.NewBusiness_TravelTrailer"/>
+        </classes>
+    </test>
+
+    <!--  EX  -->
+    <test enabled="false" name="Excess Liability Base">
+        <classes>
+            <class name="runners.b_regression.ex.NewBusiness"/>
+            <!--            <class name="runners.b_regression.ex.Endorsement"/>-->
+        </classes>
+    </test>
+
+    <!--  CO  -->
+    <test enabled="false" name="Collections Base">
+        <classes>
+            <class name="runners.b_regression.co.NewBusiness"/>
+        </classes>
+    </test>
+
+    <!--  HS  -->
+    <test enabled="false" name="Homeowners Surplus Base">
+        <classes>
+            <class name="runners.b_regression.hs.NewBusiness"/>
+        </classes>
+    </test>
+
+    <!--  PW  -->
+    <test enabled="false" name="Personal Watercraft Base">
+        <classes>
+            <class name="runners.b_regression.pw.NewBusiness"/>
+        </classes>
+    </test>
+
+    <!--  ES  -->
+    <test enabled="false" name="Excess Surplus Liability Base">
+        <classes>
+            <class name="runners.b_regression.es.NewBusiness"/>
+        </classes>
+    </test>
+
+    <!--  Failed Tests  -->
+    <test enabled="false" name="Rerun Failures">
+        <classes>
+            <class name="runners.d_other.FailuresRunner"/>
+        </classes>
+    </test>
+
+</suite>
